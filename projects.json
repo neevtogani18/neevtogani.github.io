@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "name": "Sample Project – Financial Dashboard",
+    "description": "An interactive dashboard built to track KPIs, revenue trends, and budget vs actuals for a simulated company. Visualized month-on-month performance with drill-down capability.",
+    "tools": ["Excel", "Power BI", "SQL"],
+    "findings": "Identified a 12% cost overrun in Q3 operations. Automated reporting reduced manual effort by 4 hours per week.",
+    "category": "FP&A"
+  }
+]
