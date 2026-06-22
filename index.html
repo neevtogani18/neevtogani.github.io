@@ -69,6 +69,21 @@
       background: radial-gradient(circle, rgba(46,196,182,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
+    .hero-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .hero-photo-wrap { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .hero-photo {
+      width: 180px; height: 180px; border-radius: 50%;
+      object-fit: cover; border: 4px solid var(--navy);
+      box-shadow: 0 12px 30px rgba(13,27,42,0.18);
+    }
+    .hero-photo-quote {
+      margin-top: 16px; font-size: 13px; font-style: italic;
+      color: var(--muted); text-align: center; max-width: 200px;
+      line-height: 1.5;
+    }
     .hero-tag {
       display: inline-block;
       font-size: 12px; font-weight: 500; letter-spacing: 1.5px;
@@ -78,7 +93,7 @@
     }
     .hero h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(46px, 8vw, 88px);
+      font-size: clamp(46px, 7vw, 76px);
       line-height: 1.05; letter-spacing: -2px;
       color: var(--navy); margin-bottom: 8px;
     }
@@ -104,6 +119,7 @@
       font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
       padding: 12px 24px; border-radius: 6px; text-decoration: none;
       border: 2px solid var(--border); transition: all 0.2s;
+      cursor: pointer;
     }
     .btn-outline:hover { border-color: var(--navy); }
     .scroll-hint {
@@ -193,6 +209,7 @@
       box-shadow: 0 12px 40px rgba(13,27,42,0.1);
       border-color: rgba(46,196,182,0.4);
     }
+    .project-card { cursor: pointer; }
     .project-cat {
       font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
       text-transform: uppercase; color: var(--teal-dim);
@@ -218,12 +235,16 @@
     .project-findings {
       font-size: 13px; color: var(--muted);
       border-top: 1px solid var(--border); padding-top: 14px;
-      line-height: 1.6;
+      line-height: 1.6; margin-bottom: 14px;
     }
     .project-findings strong {
       font-weight: 500; color: var(--navy); display: block;
       margin-bottom: 4px; font-size: 11px; letter-spacing: 1px;
       text-transform: uppercase;
+    }
+    .project-more {
+      font-size: 12px; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--teal-dim);
     }
     .no-projects {
       grid-column: 1/-1; text-align: center;
@@ -231,6 +252,59 @@
       border: 2px dashed var(--border); border-radius: 12px;
     }
     .no-projects p { font-size: 16px; margin-top: 8px; }
+
+    /* PROJECT MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(13,27,42,0.7); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--cream); border-radius: 16px;
+      max-width: 600px; width: 100%; max-height: 88vh;
+      overflow-y: auto; position: relative;
+      padding: 36px 36px 30px;
+    }
+    .modal-close-x {
+      position: absolute; top: 14px; right: 18px;
+      background: none; border: none; cursor: pointer;
+      font-size: 20px; color: var(--muted); line-height: 1;
+    }
+    .modal-close-x:hover { color: var(--navy); }
+    .modal-cat {
+      font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--teal-dim); margin-bottom: 8px;
+    }
+    .modal-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px; line-height: 1.2; color: var(--navy); margin-bottom: 24px;
+    }
+    .modal-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted);
+      margin: 22px 0 8px;
+    }
+    .modal-text { font-size: 15px; color: var(--text); line-height: 1.8; }
+    .modal-tools-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .modal-tool-tag {
+      font-size: 13px; font-weight: 500;
+      background: var(--navy); color: var(--cream);
+      padding: 5px 12px; border-radius: 5px;
+    }
+    .modal-findings-box {
+      font-size: 15px; color: var(--text); line-height: 1.8;
+      background: rgba(46,196,182,0.1); border-left: 3px solid var(--teal);
+      padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 4px;
+    }
+    .modal-close-row { text-align: center; margin-top: 28px; }
+    .modal-close-text {
+      background: none; border: 1.5px solid var(--border);
+      border-radius: 6px; padding: 10px 28px; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      color: var(--muted); transition: all 0.2s;
+    }
+    .modal-close-text:hover { border-color: var(--navy); color: var(--navy); }
 
     /* CERTIFICATIONS */
     #certifications { background: var(--cream-2); }
@@ -308,6 +382,7 @@
       .about-grid { grid-template-columns: 1fr; gap: 36px; }
       .nav-links { display: none; }
       .hero h1 { letter-spacing: -1px; }
+      .hero-inner { flex-direction: column-reverse; }
     }
   </style>
 </head>
@@ -326,12 +401,21 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-tag">Open to Opportunities</div>
-  <h1>Neev <em>Togani</em></h1>
-  <p class="hero-headline">ACCA | MBA – NMIMS | IIM Ranchi Certified | Bachelor of International Accounting</p>
-  <div class="hero-cta">
-    <a href="#projects" class="btn-primary">View Projects ↓</a>
-    <a href="mailto:neevtogani@gmail.com" class="btn-outline">Get In Touch</a>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Open to Opportunities</div>
+      <h1>Neev <em>Togani</em></h1>
+      <p class="hero-headline">ACCA | MBA – NMIMS | IIM Ranchi Certified | Bachelor of International Accounting</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Projects ↓</a>
+        <a href="mailto:neevtogani@gmail.com" class="btn-outline">Get In Touch</a>
+        <button class="btn-outline" onclick="alert('CV coming soon! Please check back shortly.')">Download CV ↓</button>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="assets/profile.jpeg" alt="Neev Togani" class="hero-photo" />
+      <p class="hero-photo-quote">"I turn financial data into decisions"</p>
+    </div>
   </div>
   <div class="scroll-hint">Scroll to explore</div>
 </section>
@@ -370,7 +454,7 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">Technical Skills</div>
+  <div class="section-label">Skills</div>
   <h2 class="section-title">Technical Skills</h2>
   <div class="skills-grid fade-in">
     <div class="skill-pill core">Excel (Advanced)</div>
@@ -380,11 +464,18 @@
     <div class="skill-pill core">Tableau</div>
     <div class="skill-pill">Budgeting</div>
     <div class="skill-pill">Forecasting</div>
-    <div class="skill-pill">Data Analysis</div>
-    <div class="skill-pill">Problem Solving</div>
-    <div class="skill-pill">MS Office</div>
     <div class="skill-pill">FP&A</div>
     <div class="skill-pill core">Financial Modelling</div>
+  </div>
+
+  <h2 class="section-title" style="margin-top:56px;">Soft Skills</h2>
+  <div class="skills-grid fade-in">
+    <div class="skill-pill">Analytical Thinking</div>
+    <div class="skill-pill">Problem Solving</div>
+    <div class="skill-pill">Communication</div>
+    <div class="skill-pill">Stakeholder Management</div>
+    <div class="skill-pill">Attention to Detail</div>
+    <div class="skill-pill">Time Management</div>
   </div>
 </section>
 
@@ -397,6 +488,11 @@
   </div>
 </section>
 
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal-overlay" id="projectModal" onclick="if(event.target===this) closeModal()">
+  <div class="modal-box" id="modalContent"></div>
+</div>
+
 
 
 <!-- CONTACT -->
@@ -404,7 +500,7 @@
   <div class="section-label">Let's Connect</div>
   <h2 class="section-title">Get in touch.</h2>
   <div class="contact-inner fade-in">
-    <p class="contact-tagline">Open to Business Analyst, FP&A, financial analysis, and business analytics opportunities. Feel free to reach out directly.</p>
+    <p class="contact-tagline">Open to Business Analyst, FP&A, financial analysis opportunities. Feel free to reach out directly.</p>
     <div class="contact-links">
       <a href="mailto:neevtogani@gmail.com" class="contact-link">
         <div class="contact-link-icon">✉</div>
@@ -436,27 +532,64 @@
 </footer>
 
 <script>
+  let allProjects = [];
+
   async function loadProjects() {
     const grid = document.getElementById('projects-grid');
     try {
       const res = await fetch('projects.json');
-      const projects = await res.json();
-      if (!projects.length) {
+      allProjects = await res.json();
+      if (!allProjects.length) {
         grid.innerHTML = `<div class="no-projects"><div style="font-size:32px">📁</div><p>Projects coming soon.</p></div>`;
         return;
       }
-      grid.innerHTML = projects.map(p => `
-        <div class="project-card">
+      grid.innerHTML = allProjects.map((p, i) => `
+        <div class="project-card" onclick="openModal(${i})">
           <div class="project-cat">${p.category || 'Analytics'}</div>
           <div class="project-name">${p.name}</div>
           <div class="project-desc">${p.description}</div>
           <div class="project-tools">${p.tools.map(t => `<span class="tool-tag">${t}</span>`).join('')}</div>
           <div class="project-findings"><strong>Key Results</strong>${p.findings}</div>
+          <div class="project-more">Click for more details →</div>
         </div>
       `).join('');
     } catch (e) {
       grid.innerHTML = `<div class="no-projects"><p>Projects loading...</p></div>`;
     }
+  }
+
+  function openModal(index) {
+    const p = allProjects[index];
+    const photosHtml = (p.photos && p.photos.length)
+      ? `<div class="modal-label">Screenshots</div>
+         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px;">
+           ${p.photos.map(src => `<img src="${src}" style="width:100%; border-radius:8px; object-fit:cover; height:110px;" />`).join('')}
+         </div>`
+      : '';
+    const videoHtml = p.video
+      ? `<div class="modal-label">Demo Video</div>
+         <div style="margin-top:4px;"><iframe width="100%" height="220" src="${p.video}" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe></div>`
+      : '';
+
+    document.getElementById('modalContent').innerHTML = `
+      <button class="modal-close-x" onclick="closeModal()">✕</button>
+      <div class="modal-cat">${p.category || 'Analytics'}</div>
+      <div class="modal-title">${p.name}</div>
+      <div class="modal-label">Description</div>
+      <div class="modal-text">${p.description}</div>
+      <div class="modal-label">Tools Used</div>
+      <div class="modal-tools-row">${p.tools.map(t => `<span class="modal-tool-tag">${t}</span>`).join('')}</div>
+      <div class="modal-label">Key Results</div>
+      <div class="modal-findings-box">${p.findings}</div>
+      ${photosHtml}
+      ${videoHtml}
+      <div class="modal-close-row"><button class="modal-close-text" onclick="closeModal()">Close</button></div>
+    `;
+    document.getElementById('projectModal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('projectModal').classList.remove('open');
   }
 
   loadProjects();
