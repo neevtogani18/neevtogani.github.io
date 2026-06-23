@@ -75,15 +75,18 @@
     }
     .hero-photo-wrap { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
     .hero-photo {
-      width: 180px; height: 180px; border-radius: 50%;
-      object-fit: cover; border: 4px solid var(--navy);
-      box-shadow: 0 12px 30px rgba(13,27,42,0.18);
+      width: 280px; height: 340px; border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 16px 40px rgba(13,27,42,0.2);
     }
     .hero-photo-quote {
-      margin-top: 16px; font-size: 13px; font-style: italic;
-      color: var(--muted); text-align: center; max-width: 200px;
-      line-height: 1.5;
+      margin-top: 16px; font-size: 14px; font-weight: 500;
+      color: var(--navy); text-align: center; max-width: 280px;
+      line-height: 1.5; border: 1.5px solid var(--teal);
+      border-radius: 8px; padding: 12px 18px;
+      background: rgba(46,196,182,0.06);
     }
+    .hero-photo-quote span { color: var(--teal-dim); font-weight: 600; }
     .hero-tag {
       display: inline-block;
       font-size: 12px; font-weight: 500; letter-spacing: 1.5px;
@@ -305,6 +308,21 @@
       color: var(--muted); transition: all 0.2s;
     }
     .modal-close-text:hover { border-color: var(--navy); color: var(--navy); }
+    .modal-photo-placeholder {
+      background: #ddd8ce; border-radius: 8px; height: 110px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 13px; border: 1px dashed #bbb5a8;
+    }
+    .modal-video-placeholder {
+      background: var(--navy); border-radius: 8px; height: 130px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--cream); gap: 8px; margin-top: 4px;
+    }
+    .modal-play-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--teal); display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
 
     /* CERTIFICATIONS */
     #certifications { background: var(--cream-2); }
@@ -414,7 +432,7 @@
     </div>
     <div class="hero-photo-wrap">
       <img src="profile.jpeg" alt="Neev Togani" class="hero-photo" />
-      <p class="hero-photo-quote">"I turn financial data into decisions"</p>
+      <p class="hero-photo-quote">"I turn <span>financial data</span> into <span>decisions</span>"</p>
     </div>
   </div>
   <div class="scroll-hint">Scroll to explore</div>
